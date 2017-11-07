@@ -38,9 +38,6 @@ class UserProfileAadmin(object): #人员信息展示列
     list_filter = ('deptname', 'deptlevel', 'parentid', 'is_active', 'add_time')  # 显示过滤器
 
 
-
-
-
 xadmin.site.register(DeptProfile,DeptProfileAdmin)
 xadmin.site.register(views.BaseAdminView,BaseSetting)
 xadmin.site.register(views.CommAdminView, GlobalSetting)

@@ -28,7 +28,7 @@ class LoginView(View):
     def get(self,request):
         login_form = LoginForm()
         captcha = login_form['captcha']
-        return render(request, "login.html",{'captcha':captcha})
+        return render(request, "exam/login.html",{'captcha':captcha})
     def post(self,request):
         login_form = LoginForm(request.POST)#声明实例化,
         captcha = login_form['captcha']
@@ -38,9 +38,9 @@ class LoginView(View):
             user = authenticate(username=user_name, password=pass_word)  # 向数据库验证，必须使用username,password来登录
             if user is not None:
                 login(request, user)
-                return render(request, "index.html",{})
+                return render(request, "exam/index.html",{})
         else:
-            return render(request, "login.html", {'captcha':captcha,"msg": "用户名或密码错误！"})
+            return render(request, "exam/login.html", {'captcha':captcha,"msg": "用户名或密码错误！"})
 
 
 

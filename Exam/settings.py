@@ -81,7 +81,7 @@ ROOT_URLCONF = 'Exam.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], #html模板存放路径
+        'DIRS': [os.path.join(BASE_DIR,'templates')], #html模板存放路径
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,6 +150,6 @@ USE_TZ = False#若不修改为False则会存储为国际时间
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = ( #静态文件存放路径
-  #  os.path.join(BASE_DIR,"static")
-#)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
