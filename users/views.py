@@ -1,12 +1,12 @@
 #_*_ encoding:utf-8 _*_
 from __future__ import unicode_literals
-from django.shortcuts import render
-from django.shortcuts import render_to_response
+from django.shortcuts import render,HttpResponse
 from django.contrib.auth import authenticate,login #验证登录
 from django.contrib.auth.backends import ModelBackend #认证
 from django.views.generic.base import View
 # from captcha.models import CaptchaStore
 # from captcha.helpers import captcha_image_url
+
 import  json
 
 from .models import UserProfile
@@ -38,7 +38,17 @@ class LoginView(View):
             user = authenticate(username=user_name, password=pass_word)  # 向数据库验证，必须使用username,password来登录
             if user is not None:
                 login(request, user)
-                return render(request, "exam/index.html",{})
+                if user.role == 's':
+                    userRole = ['student']
+                    # userRole = "student"
+                    # return HttpResponse(json.dumps({"userRole":userRole}))
+                else :
+                    userRole = ['teacher']
+                    # userRole = "teacher"
+                    # return HttpResponse(json.dumps({"userRole":userRole}))
+                # return render(request, "exam/index.html")
+                user_info = UserProfile.objects.get(username=user_name)
+                return render(request, "exam/index.html", {"user_info": user_info,'userRole': json.dumps(userRole)})
         else:
             return render(request, "exam/login.html", {'captcha':captcha,"msg": "用户名或密码错误！"})
 

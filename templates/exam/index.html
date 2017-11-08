@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/exam/icon-font/iconfont.css">  <!--字体图标-->
     <link rel="stylesheet" href="/static/exam/font/iconfont.css">
     <link rel="stylesheet" href="/static/exam/css/frame.css">            <!--框架样式-->
+
 </head>
 <body>
     <div class="container clear" >
@@ -20,21 +21,18 @@
         <div class="fl right">
             <header >
                 <div class="top user">
-                    用户名：{{ user_role }}
+                    用户名：{{ user_info.username | safe }}
                 </div>
             </header>
             <section class="content" id="content"></section>
         </div>
     </div>
-    <script src="/static/exam/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/exam/js/nav.js"></script>
-    <script src="/static/exam/js/index.js"></script>
-    <script>
-
-        var userRole1={{ user_role |safe }};
-         console.log("type:"+typeof userRole1);
-        console.log("----:"+userRole1);
+    <script type="text/javascript">
+        var userRole={{ userRole |safe }};
     </script>
+    <script type="text/javascript" src="/static/exam/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/exam/js/nav.js"></script>
+    <script type="text/javascript" src="/static/exam/js/index.js"></script>
 </body>
 </html>
 

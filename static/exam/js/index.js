@@ -1,7 +1,6 @@
 /**
  * Created by Wang on 2017/10/28.
  */
-
 /*学生界面的导航*/
 var studentNav=[
     {"icon":"kaoshi","content":"考试","link":"exam"},
@@ -22,7 +21,8 @@ var teacherNav=[
  {"icon":"","content":"基础数据维护"}
  ]*/
 
-var userRole="teacher";
+//var userRole="teacher";
+    console.log("userRole:"+ userRole);
     if(userRole=="teacher"){
         loadNav(teacherNav);
     }else{
@@ -39,7 +39,7 @@ $(".nav-ul a").click(function(e){
     var url=$(this).attr("href")+".html";
     //动态加载template模块
     $.ajax({
-        url: "/templates/exam/"+userRole+"/"+url,
+        url: "/static/exam/template/"+userRole+"/"+url,
         global: false,
         type: "POST",
         dataType: "html",
